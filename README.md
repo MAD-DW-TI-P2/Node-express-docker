@@ -67,7 +67,14 @@ README.Docker.md // Info sobre cómo levantar Docker
 - Subir: `docker push signados/register-2:latest`
 - Verificamos que la imagen se ha subido
 <kbd><img src="https://jorgebenitezlopez.com/github/dockerhub.png" style="border:1px solid grey"></kbd>
+- Podriamos desplegar esta imagen pero no es compatible con algunas plataformas (5 horas investigando...) Mejor utilizar el siguiente comando. Se trata de una mejora del comando docker build, proporcionando más características y opciones para la creación de imágenes. Su funcionalidad principal es permitir la construcción de imágenes Docker para múltiples plataformas de hardware desde una única máquina. Verificamos que el register-3 están en Docker hub.
+- ```docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t signados/register-3:latest \
+  --push .
+```
 
+## Empieza lo bueno. Hasta aquí la intro a Docker ahora a desplegarlo en producción: Dominio/Subdominio, DNS, hosting, certificado, subir la imagen, montar un contenedor y crear un proxy inverso (un proxy inverso actúa como intermediario para los servidores con respecto a las solicitudes procedentes de los clientes)
 
 
 
