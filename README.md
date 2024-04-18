@@ -27,7 +27,8 @@
 ? What version of Node do you want to use? 21.6.2
 ? Which package manager do you want to use? npm
 ? What command do you want to use to start the app? node index.js
-? What port does your server listen on? 8081```
+? What port does your server listen on? 8081
+```
 
 - Me genera:
 
@@ -35,4 +36,5 @@
 .dockerignore
 Dockerfile
 compose.yaml
-README.Docker.md```
+README.Docker.md
+```
