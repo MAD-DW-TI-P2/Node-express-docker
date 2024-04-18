@@ -1,3 +1,5 @@
+<kbd><img src="https://jorgebenitezlopez.com/github/pro/docker-facebook.png" style="border:1px solid grey"></kbd>
+
 # Node-express-docker
 
 - ¿Para qué sirve Docker? https://app.sli.do/event/mPKeWYdt9xkRkCoYrGYbkn
