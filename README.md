@@ -22,12 +22,15 @@
 
 ## Necesitamos un proyecto para generar la imagen y luego los contenedores de docker.
 
-- A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un registro y login de usuarios. Es recomendable que la base de datos no esté en local. Ejemplo en [https://www.mongodb.com/](https://www.mongodb.com/atlas/database)
+- A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un registro y login de usuarios. Es recomendable que la base de datos no esté en local. Ejemplo en [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database)
 - Para ello puedes utilizar la carpeta register-1 con un node. Solo tendrías que generar el .env con las variables personalizadas del .env.example
+- Levantas el servico y hacen una petición para comprobar que todo ok
+- <img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey">
+- Cerramos el servidor para montarlo en un contenedor de Docker
 
-## Una vez que tenemos el proyecto funcionando (Hacemos una llamada por POST enviando datos de un usuario), generamos su imagen
+## Iniciamos Docker en el proyecto
 
-- En el proyecto ejecuto docker init y pongo lo siguiente
+- En el proyecto ejecuto docker init y pongo lo siguiente (Me reconoce algunas)
 ```
 ? What application platform does your project use? Node
 ? What version of Node do you want to use? 21.6.2
@@ -39,18 +42,32 @@
 - Me genera:
 
 ```
-.dockerignore
-Dockerfile
-compose.yaml
-README.Docker.md
+.dockerignore // Como el gitignore
+Dockerfile // Las instrucciones para levantar la app
+compose.yaml // Una archivo para componer contenedores 
+README.Docker.md // Info sobre cómo levantar Docker
 ```
 - Una vez generado el archivo (Dokerfile) ya podríamos crear la imagen y el contenedor con el siguiente comando: docker compose up --build . Puedes probar pero da error... El docker compose es un comando que define servicios y los iniciarías juntos con un solo comando.
 - Para solucionar este error tenemos varias opciones, ¿Cuál es la más segura?:
   - Vamos a editar el compose.yaml para que la imagen acceda a las variables de entorno. Puedes ver que está comentado en el compose de register-2 
   - También podría poner una referencia al .env en el compose. Puedes ver que está comentado en el compose de register-2 
   - Más avanzado: Docker Secret es una característica de Docker que ayuda a gestionar y almacenar de forma segura información confidencial, como contraseñas, tokens de acceso y claves privadas. Está diseñado principalmente para ser utilizado con Docker Swarm. O también herramientas de gestión de secretos: Herramientas como HashiCorp Vault, AWS Secrets Manager o Azure Key
-- Levantas el contenedor y verifico que funciona el servicio. Con Postman o una herrmienta similar. Parece lo mismo pero a donde haces la llamada ahora es a un contenedor
+- Levantas el contenedor y verifico que funciona el servicio. Con Postman o una herramienta similar. Parece lo mismo pero a donde haces la llamada ahora es a un contenedor
 - <img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey">
 - También puedes comprobar cómo has creado un contenedor y una imagen en la app de Docker
 - <img src="https://jorgebenitezlopez.com/github/docker-container.png" style="border:1px solid grey">
+
+## Vamos a construir la imagen "manualmente" para subirla a Docker hub
+
+- Contruyes la imagen esta vez con: `docker build -t register-2 .`Tiene que devolver algo así: View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/l1v9l1w537y5xcml5zgyb3f3k
+- Puedes verificar con `docker images` Tiene que aparecer la imagen que has creado.
+- Para subir esta imagen a docker hub hay que etiquetar tu imagen con tu nombre de usuario. Ejemplo: `docker tag register-2:latest signados/register-2:latest`
+- Puedes levantar un contenedor manualmente de esa imagen con el siguiente comando: `docker run -e NODE_ENV='production' -e TOKEN_SECRET='XXXXXX' -e MONGODB_URI='mongodb+srv://XXXXXX:XXXXXXXX@cluster0.XXXXX.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' -e PORT_CONNECTION='8081' -p 8081:8081 signados/register-2:latest` y de nuevo verificar que todo funciona.
+- Ejecutar este comando para verificar que estamos logados: `docker login`
+- Subir: `docker push signados/register-2:latest`
+- Verificamos que la imagen se ha subido
+- <img src="https://jorgebenitezlopez.com/github/docker-hub.png" style="border:1px solid grey">
+
+
+
 
