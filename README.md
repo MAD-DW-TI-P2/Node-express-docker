@@ -68,7 +68,8 @@ README.Docker.md // Info sobre cómo levantar Docker
 - Verificamos que la imagen se ha subido
 <kbd><img src="https://jorgebenitezlopez.com/github/dockerhub.png" style="border:1px solid grey"></kbd>
 - Podriamos desplegar esta imagen pero no es compatible con algunas plataformas (5 horas investigando...) Mejor utilizar el siguiente comando. Se trata de una mejora del comando docker build, proporcionando más características y opciones para la creación de imágenes. Su funcionalidad principal es permitir la construcción de imágenes Docker para múltiples plataformas de hardware desde una única máquina. Verificamos que el register-3 están en Docker hub.
-- ```docker buildx build \
+-
+```docker buildx build \
   --platform linux/amd64,linux/arm64 \
   -t signados/register-3:latest \
   --push .
