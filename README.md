@@ -22,7 +22,7 @@
 - A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un CRUD de tareas. Es recomendable que la base de datos no esté en local. Ejemplo en https://www.mongodb.com/
 - Para ello puedes utilizar la carpeta register-1 con un node con un CRUD de registro de usuarios. Solo tendrías que generar el .env con las variables personalizadas del .env.example
 - En el proyecto ejecuto docker init y pongo lo siguiente
-```js
+```
 ? What application platform does your project use? Node
 ? What version of Node do you want to use? 21.6.2
 ? Which package manager do you want to use? npm
@@ -30,7 +30,8 @@
 ? What port does your server listen on? 8081```
 
 - Me genera:
-```js
+
+```
 .dockerignore
 Dockerfile
 compose.yaml
