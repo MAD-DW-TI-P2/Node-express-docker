@@ -12,7 +12,7 @@
 
 ## Intro a Docker
 
-<img src="https://jorgebenitezlopez.com/tiddlywiki/pro/docker-visual.png" style="border:1px solid grey">
+<kbd><img src="https://jorgebenitezlopez.com/tiddlywiki/pro/docker-visual.png" style="border:1px solid grey"></kbd>
 
 - Un __Dockerfile__ es un archivo de texto plano que contiene una serie de instrucciones que le dicen a Docker cómo construir una imagen de contenedor. Docker utiliza este archivo para automatizar el proceso de creación de imágenes
 
@@ -25,7 +25,7 @@
 - A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un registro y login de usuarios. Es recomendable que la base de datos no esté en local. Ejemplo en [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database)
 - Para ello puedes utilizar la carpeta register-1 con un node. Solo tendrías que generar el .env con las variables personalizadas del .env.example
 - Levantas el servico y hacen una petición para comprobar que todo ok
-- <img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey">
+<kbd><img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey"></kbd>
 - Cerramos el servidor para montarlo en un contenedor de Docker
 
 ## Iniciamos Docker en el proyecto
@@ -53,9 +53,9 @@ README.Docker.md // Info sobre cómo levantar Docker
   - También podría poner una referencia al .env en el compose. Puedes ver que está comentado en el compose de register-2 
   - Más avanzado: Docker Secret es una característica de Docker que ayuda a gestionar y almacenar de forma segura información confidencial, como contraseñas, tokens de acceso y claves privadas. Está diseñado principalmente para ser utilizado con Docker Swarm. O también herramientas de gestión de secretos: Herramientas como HashiCorp Vault, AWS Secrets Manager o Azure Key
 - Levantas el contenedor y verifico que funciona el servicio. Con Postman o una herramienta similar. Parece lo mismo pero a donde haces la llamada ahora es a un contenedor
-- <img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey">
+<kbd><img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey"></kbd>
 - También puedes comprobar cómo has creado un contenedor y una imagen en la app de Docker
-- <img src="https://jorgebenitezlopez.com/github/docker-container.png" style="border:1px solid grey">
+<kbd><img src="https://jorgebenitezlopez.com/github/docker-container.png" style="border:1px solid grey"></kbd>
 
 ## Vamos a construir la imagen "manualmente" para subirla a Docker hub
 
@@ -66,7 +66,7 @@ README.Docker.md // Info sobre cómo levantar Docker
 - Ejecutar este comando para verificar que estamos logados: `docker login`
 - Subir: `docker push signados/register-2:latest`
 - Verificamos que la imagen se ha subido
-- <img src="https://jorgebenitezlopez.com/github/docker-hub.png" style="border:1px solid grey">
+<kbd><img src="https://jorgebenitezlopez.com/github/dockerhub.png" style="border:1px solid grey"></kbd>
 
 
 
