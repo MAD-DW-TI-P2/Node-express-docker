@@ -1,4 +1,4 @@
-<kbd><img src="https://jorgebenitezlopez.com/github/pro/docker-facebook.png" style="border:1px solid grey"></kbd>
+<kbd><img src="https://jorgebenitezlopez.com/github/docker-facebook.png" style="border:1px solid grey"></kbd>
 
 # Node-express-docker
 
