@@ -1,5 +1,8 @@
 # Node-express-docker
 
+- Para qué sirve Docker: https://app.sli.do/event/mPKeWYdt9xkRkCoYrGYbkn
+- Docker es una plataforma de contenedores que facilita la creación, el despliegue y la ejecución de aplicaciones de manera consistente y portátil en cualquier entorno. Permite empacar una aplicación y todas sus dependencias en un contenedor estandarizado, lo que garantiza que la aplicación se ejecute de la misma manera en cualquier lugar donde se ejecute Docker.
+
 ## Requisitos
 
 - Docker desktop: https://www.docker.com/products/docker-desktop/. Es como Sourcetree
@@ -17,10 +20,13 @@
 
 - Un __contenedor__ es una instancia en ejecución de una imagen. Cuando inicias un contenedor a partir de una imagen, Docker toma la "plantilla" que la imagen proporciona y la usa para crear un entorno aislado y ejecutable donde tu aplicación puede correr. Esto es similar a "restaurar una máquina virtual a partir de un snapshot",
 
-## Necesitamos un proyecto para generar la imagen y luego los contenedores.
+## Necesitamos un proyecto para generar la imagen y luego los contenedores de docker.
 
 - A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un CRUD de tareas. Es recomendable que la base de datos no esté en local. Ejemplo en https://www.mongodb.com/
 - Para ello puedes utilizar la carpeta register-1 con un node con un CRUD de registro de usuarios. Solo tendrías que generar el .env con las variables personalizadas del .env.example
+
+## Una vez que tenemos el proyecto ok, generamos su imagen
+
 - En el proyecto ejecuto docker init y pongo lo siguiente
 ```
 ? What application platform does your project use? Node
@@ -38,3 +44,7 @@ Dockerfile
 compose.yaml
 README.Docker.md
 ```
+- Una vez generado el archivo (Dokerfile) ya podríamos crear la imagen y el contenedor con el siguiente comando: docker compose up --build . Puedes prpbar pero da error
+- Como el proyecto necesita una conexión a una base de datos vamos a editar el compose.yaml para que la imagen acceda a las variables de entorno. ¿Es la forma más segura de hacerlo?
+  - También podría poner una referencia al .env en el compose...
+
