@@ -75,7 +75,9 @@ README.Docker.md // Info sobre cómo levantar Docker
   --push .
 ```
 
-## Empieza lo bueno. Hasta aquí la intro a Docker ahora a desplegarlo en producción: Dominio/Subdominio, DNS, hosting, certificado, subir la imagen, montar un contenedor y crear un proxy inverso (un proxy inverso actúa como intermediario para los servidores con respecto a las solicitudes procedentes de los clientes)
+## Empieza lo bueno. 
+
+- Hasta aquí la intro a Docker ahora a desplegarlo en producción: Dominio/Subdominio, DNS, hosting, certificado, subir la imagen, montar un contenedor y crear un proxy inverso (un proxy inverso actúa como intermediario para los servidores con respecto a las solicitudes procedentes de los clientes)
 
 
 
