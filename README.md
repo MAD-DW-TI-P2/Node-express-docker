@@ -1,18 +1,18 @@
 <kbd><img src="https://jorgebenitezlopez.com/github/docker-facebook.png" style="border:1px solid grey"></kbd>
 
-# Node-express-docker
+# Introducción a Docker 😀
 
 - ¿Para qué sirve Docker? https://app.sli.do/event/mPKeWYdt9xkRkCoYrGYbkn
 - Docker es una plataforma de contenedores que facilita la creación, el despliegue y la ejecución de aplicaciones de manera consistente y portátil en cualquier entorno. Permite empacar una aplicación y todas sus dependencias en un contenedor estandarizado, lo que garantiza que la aplicación se ejecute de la misma manera en cualquier lugar donde se ejecute Docker. __Mantener en tu ordenador un entorno de ejecución compatible con el poryecto, tener un entorno compartido y sobre todo desplegar en producción sin preocuparte mucho de la la configuración/lenguajes del servidor.__
 
-## Requisitos
+## Requisitos 👍🏽
 
 - Docker desktop: https://www.docker.com/products/docker-desktop/. Es como Sourcetree
 - Docker cli en Mac: https://formulae.brew.sh/formula/docker (En Windows se instala con la app). Es como git.
 - Docker hub: https://hub.docker.com/ (Crearse cuenta, la misma que la de escritorio). Es como Github.
 - Node: https://nodejs.org/en/download
 
-## Intro a Docker
+## Primeros pasos 🧘🏼‍♂️
 
 <kbd><img src="https://jorgebenitezlopez.com/tiddlywiki/pro/docker-visual.png" style="border:1px solid grey"></kbd>
 
@@ -22,7 +22,7 @@
 
 - Un __contenedor__ es una instancia en ejecución de una imagen. Cuando inicias un contenedor a partir de una imagen, Docker toma la "plantilla" que la imagen proporciona y la usa para crear un entorno aislado y ejecutable donde tu aplicación puede correr. Esto es similar a "restaurar una máquina virtual a partir de un snapshot",
 
-## Necesitamos un proyecto para generar la imagen y luego los contenedores de docker.
+## Necesitamos un proyecto para generar la imagen y luego el contenedor ⭐️
 
 - A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un registro y login de usuarios. Es recomendable que la base de datos no esté en local. Ejemplo en [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database)
 - Para ello puedes utilizar la carpeta register-1 con un node. Solo tendrías que generar el .env con las variables personalizadas del .env.example
@@ -30,7 +30,7 @@
 <kbd><img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey"></kbd>
 - Cerramos el servidor para montarlo en un contenedor de Docker
 
-## Iniciamos Docker en el proyecto
+## Iniciamos Docker en el proyecto 🤖
 
 - En el proyecto ejecuto docker init y pongo lo siguiente (Me reconoce algunas)
 ```
@@ -59,7 +59,7 @@ README.Docker.md // Info sobre cómo levantar Docker
 - También puedes comprobar cómo has creado un contenedor y una imagen en la app de Docker
 <kbd><img src="https://jorgebenitezlopez.com/github/docker-container.png" style="border:1px solid grey"></kbd>
 
-## Vamos a construir la imagen "manualmente" para subirla a Docker hub
+## Vamos a construir la imagen "manualmente" para subirla a Docker hub 🚀
 
 - Contruyes la imagen esta vez con: `docker build -t register-2 .`Tiene que devolver algo así: View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/l1v9l1w537y5xcml5zgyb3f3k
 - Puedes verificar con `docker images` Tiene que aparecer la imagen que has creado.
@@ -69,7 +69,7 @@ README.Docker.md // Info sobre cómo levantar Docker
 - Subir: `docker push signados/register-2:latest`
 - Verificamos que la imagen se ha subido
 <kbd><img src="https://jorgebenitezlopez.com/github/dockerhub.png" style="border:1px solid grey"></kbd>
-- Podriamos desplegar esta imagen pero no es compatible con algunas plataformas (5 horas investigando...) Mejor utilizar el siguiente comando. Se trata de una mejora del comando docker build, proporcionando más características y opciones para la creación de imágenes. Su funcionalidad principal es permitir la construcción de imágenes Docker para múltiples plataformas de hardware desde una única máquina. Verificamos que el register-3 están en Docker hub.
+- Podriamos desplegar esta imagen pero no es compatible con algunas plataformas (5 horas investigando...) Mejor utilizar el siguiente comando. Se trata de una mejora del comando docker build, proporcionando más características y opciones para la creación de imágenes. Su funcionalidad principal es permitir la construcción de imágenes Docker para múltiples plataformas de hardware desde una única máquina. Verificamos que el register-3 están en Docker Hub.
 ```
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
@@ -77,22 +77,33 @@ docker buildx build \
   --push .
 ```
 
-## Empieza lo bueno. 
+## Empieza lo bueno 🔥
 
 - Hasta aquí la intro a Docker ahora a desplegarlo en producción: Dominio/Subdominio, DNS, hosting, certificado, subir la imagen, montar un contenedor y crear un proxy inverso (un proxy inverso actúa como intermediario para los servidores con respecto a las solicitudes procedentes de los clientes)
 - Dominio o subdominio. Es la dirección de nuestro página, una palabra facilmente reconocible por humanos aociada a una IP. https://www.ionos.es/ tiene buenos precios. Creo el dominio o subdominio y ajusto los registros DNS, el A, para que apunte al hosting donde voy a desplegar el Docker. (Por ejemplo: el A a 49.13.192.32). Podemos comprobar su propagación
 <kbd><img src="https://jorgebenitezlopez.com/github/propagaciondns.png" style="border:1px solid grey"></kbd>
 - En nuestro servidor/hosting. En este caso con Plesk como sistema de administración creamos un espacio para el dominio
 <kbd><img src="https://jorgebenitezlopez.com/github/espaciodominio.png" style="border:1px solid grey"></kbd>
+- Añadir un certificado gratuito SSL/TLS para el https. Lo instalo en el hosting y añador un registro TXT en el dominio y verifico que el certificado se ha instalado correctamente
+<kbd><img src="https://jorgebenitezlopez.com/github/certificado.png" style="border:1px solid grey"></kbd>
+<kbd><img src="https://jorgebenitezlopez.com/github/registrodns.png" style="border:1px solid grey"></kbd>
+- Busco y me descargo la imagen de Docker Hub
+<kbd><img src="https://jorgebenitezlopez.com/github/descargoimg.png" style="border:1px solid grey"></kbd>
+- Configuro los parámetros para que el contenedor que construyo con esa imagen funcione correctamente (Mapeo los puertos para externamente pueda acceder a través del 3273)
+<kbd><img src="https://jorgebenitezlopez.com/github/configurolaimagen.png" style="border:1px solid grey"></kbd>
+- El puerto en el servidor responde con la app: http://factoriaf5.item.host:3273/
+- El último paso es configurar mi servidor para que el hosting apunte al puerto del servidor donde tengo el docker
+<kbd><img src="https://jorgebenitezlopez.com/github/reglainversa.png" style="border:1px solid grey"></kbd>
+y listo ya tengo la app desplegada en mi dominio con https: https://register3.coderf5.es/
+<kbd><img src="https://jorgebenitezlopez.com/github/verificodocker.png" style="border:1px solid grey"></kbd>
 
-  
-
-## Más recursos para el despliegue
+## Más recursos para el despliegue en otros servidores
 
 - Hosting free: https://www.000webhost.com/
 - Firebase: https://firebase.google.com/docs/database
 - Fly.io: https://fly.io/
 - Netlify: https://www.netlify.com/pricing/
 - Northflank: https://northflank.com/
+
 
 
