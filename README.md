@@ -2,8 +2,8 @@
 
 # Introducción a Docker 😀
 
-- ¿Para qué sirve Docker? https://app.sli.do/event/mPKeWYdt9xkRkCoYrGYbkn
-- Docker es una plataforma de contenedores que facilita la creación, el despliegue y la ejecución de aplicaciones de manera consistente y portátil en cualquier entorno. Permite empacar una aplicación y todas sus dependencias en un contenedor estandarizado, lo que garantiza que la aplicación se ejecute de la misma manera en cualquier lugar donde se ejecute Docker. __Mantener en tu ordenador un entorno de ejecución compatible con el poryecto, tener un entorno compartido y sobre todo desplegar en producción sin preocuparte mucho de la la configuración/lenguajes del servidor.__
+- ¿Para qué sirve Docker?
+- Docker es una plataforma de contenedores que facilita la creación, el despliegue y la ejecución de aplicaciones de manera consistente y portátil en cualquier entorno. Permite empacar una aplicación y todas sus dependencias en un contenedor estandarizado, lo que garantiza que la aplicación se ejecute de la misma manera en cualquier lugar donde se ejecute Docker. __Mantener en tu ordenador un entorno de ejecución compatible con el proyecto, tener un entorno compartido y sobre todo desplegar en producción sin preocuparte mucho de la configuración/lenguajes del servidor.__
 
 ## Requisitos 👍🏽
 
@@ -26,7 +26,7 @@
 
 - A modo de ejemplo vamos a generar una imagen con un back realizado con express para hacer un registro y login de usuarios. Es recomendable que la base de datos no esté en local. Ejemplo en [https://www.mongodb.com/atlas/database](https://www.mongodb.com/atlas/database)
 - Para ello puedes utilizar la carpeta register-1 con un node. Solo tendrías que generar el .env con las variables personalizadas del .env.example
-- Levantas el servico y hacen una petición para comprobar que todo ok
+- Levantas el servicio y hacen una petición para comprobar que todo ok
 <kbd><img src="https://jorgebenitezlopez.com/github/postman-docker.png" style="border:1px solid grey"></kbd>
 - Cerramos el servidor para montarlo en un contenedor de Docker
 
@@ -46,10 +46,10 @@
 ```
 .dockerignore // Como el gitignore
 Dockerfile // Las instrucciones para levantar la app
-compose.yaml // Una archivo para componer contenedores 
+compose.yaml // Un archivo para componer contenedores 
 README.Docker.md // Info sobre cómo levantar Docker
 ```
-- Una vez generado el archivo (Dokerfile) ya podríamos crear la imagen y el contenedor con el siguiente comando: docker compose up --build . Puedes probar pero da error... El docker compose es un comando que define servicios y los iniciarías juntos con un solo comando.
+- Una vez generado el archivo (Dockerfile) ya podríamos crear la imagen y el contenedor con el siguiente comando: docker compose up --build . Puedes probar pero da error... El docker compose es un comando que define servicios y los iniciarías juntos con un solo comando.
 - Para solucionar este error tenemos varias opciones, ¿Cuál es la más segura?:
   - Vamos a editar el compose.yaml para que la imagen acceda a las variables de entorno. Puedes ver que está comentado en el compose de register-2 
   - También podría poner una referencia al .env en el compose. Puedes ver que está comentado en el compose de register-2 
