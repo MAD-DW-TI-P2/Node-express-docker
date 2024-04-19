@@ -64,7 +64,7 @@ README.Docker.md // Info sobre cómo levantar Docker
 - Contruyes la imagen esta vez con: `docker build -t register-2 .`Tiene que devolver algo así: View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/l1v9l1w537y5xcml5zgyb3f3k
 - Puedes verificar con `docker images` Tiene que aparecer la imagen que has creado.
 - Para subir esta imagen a docker hub hay que etiquetar tu imagen con tu nombre de usuario. Ejemplo: `docker tag register-2:latest signados/register-2:latest`
-- Puedes levantar un contenedor manualmente de esa imagen con el siguiente comando: `docker run -e NODE_ENV='production' -e TOKEN_SECRET='XXXXXX' -e MONGODB_URI='mongodb+srv://XXXXXX:XXXXXXXX@cluster0.XXXXX.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' -e PORT_CONNECTION='8081' -p 8081:8081 signados/register-2:latest` y de nuevo verificar que todo funciona.
+- Puedes levantar un contenedor manualmente de esa imagen con el siguiente comando: `docker run -e NODE_ENV='production' -e TOKEN_SECRET='XXXXXX' -e MONGODB_URI='mongodb+srv://XXXXXX:XXXXXXXX@cluster0.XXXXX.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0' -e PORT_CONNECTION='8081' -p 8081:8081 signados/register-2:latest` y de nuevo verificar que todo funciona. En este caso le paso las variables a la imagen para que monte el contenedor.
 - Ejecutar este comando para verificar que estamos logados: `docker login`
 - Subir: `docker push signados/register-2:latest`
 - Verificamos que la imagen se ha subido
