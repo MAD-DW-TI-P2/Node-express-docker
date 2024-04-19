@@ -12,7 +12,7 @@
 - Docker hub: https://hub.docker.com/ (Crearse cuenta, la misma que la de escritorio). Es como Github.
 - Node: https://nodejs.org/en/download
 
-## Primeros pasos 🧘🏼‍♂️
+## Bases 🧘🏼‍♂️
 
 <kbd><img src="https://jorgebenitezlopez.com/tiddlywiki/pro/docker-visual.png" style="border:1px solid grey"></kbd>
 
