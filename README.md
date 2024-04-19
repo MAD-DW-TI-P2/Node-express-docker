@@ -80,6 +80,19 @@ docker buildx build \
 ## Empieza lo bueno. 
 
 - Hasta aquí la intro a Docker ahora a desplegarlo en producción: Dominio/Subdominio, DNS, hosting, certificado, subir la imagen, montar un contenedor y crear un proxy inverso (un proxy inverso actúa como intermediario para los servidores con respecto a las solicitudes procedentes de los clientes)
+- Dominio o subdominio. Es la dirección de nuestro página, una palabra facilmente reconocible por humanos aociada a una IP. https://www.ionos.es/ tiene buenos precios. Creo el dominio o subdominio y ajusto los registros DNS, el A, para que apunte al hosting donde voy a desplegar el Docker. (Por ejemplo: el A a 49.13.192.32). Podemos comprobar su propagación
+<kbd><img src="https://jorgebenitezlopez.com/github/propagaciondns.png" style="border:1px solid grey"></kbd>
+- En nuestro servidor/hosting. En este caso con Plesk como sistema de administración creamos un espacio para el dominio
+<kbd><img src="https://jorgebenitezlopez.com/github/espaciodominio.png" style="border:1px solid grey"></kbd>
 
+  
+
+## Más recursos para el despliegue
+
+- Hosting free: https://www.000webhost.com/
+- Firebase: https://firebase.google.com/docs/database
+- Fly.io: https://fly.io/
+- Netlify: https://www.netlify.com/pricing/
+- Northflank: https://northflank.com/
 
 
